@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>出張整体 予約・集計フォーム</title>
+  <style>
+    :root{--ink:#22302f;--muted:#64736f;--line:#d8e3de;--field:#fbfdfb;--brand:#167466;--brand-dark:#0f5c51;--accent:#d88745;--bg:#f4f8f5;--panel:#fff;--soft:#eef6f2;--error:#b3261e;--shadow:0 18px 44px rgba(24,55,49,.13)}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(140deg,rgba(22,116,102,.14),transparent 36%),linear-gradient(315deg,rgba(216,135,69,.16),transparent 34%),var(--bg);font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,system-ui,sans-serif;line-height:1.65}main{min-height:100vh;padding:28px 16px}.shell{width:min(1180px,100%);margin:0 auto;display:grid;gap:20px}.hero{display:grid;grid-template-columns:.86fr 1.14fr;gap:20px}.intro{padding:30px;border-radius:8px;background:#183731;color:#f7fffb;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}.intro:after{content:"";position:absolute;right:-52px;bottom:-72px;width:240px;height:240px;background:radial-gradient(circle,rgba(216,135,69,.42),transparent 62%);pointer-events:none}.eyebrow{margin:0 0 12px;color:#b9dfd4;font-size:.86rem;font-weight:700;letter-spacing:0}h1{margin:0;font-size:clamp(2rem,5vw,3.4rem);line-height:1.16;letter-spacing:0}.intro p{margin:18px 0 0;max-width:28rem;color:#dcece7}.company-display{position:relative;z-index:1;margin-top:28px;padding:14px 16px;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.08)}.company-display strong{display:block;font-size:1.16rem}.panel{background:var(--panel);border:1px solid rgba(33,48,47,.08);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}.panel-pad{padding:26px}.section-title{margin:0 0 16px;font-size:1.12rem;line-height:1.35}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{display:grid;gap:8px}.field.full{grid-column:1/-1}label,legend{font-weight:700;font-size:.94rem}.required{color:var(--error);font-weight:800}input,select,textarea{width:100%;min-height:48px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);font:inherit;padding:10px 12px;outline:none}textarea{min-height:94px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px rgba(22,116,102,.15)}fieldset{grid-column:1/-1;margin:0;padding:0;border:0}.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}.choice{position:relative}.choice input{position:absolute;opacity:0;inset:0;cursor:pointer}.choice span{display:grid;min-height:46px;place-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);text-align:center;font-weight:700;font-size:.92rem}.choice input:checked+span{border-color:var(--brand);background:rgba(22,116,102,.1);color:var(--brand-dark);box-shadow:inset 0 0 0 1px var(--brand)}.actions{display:flex;gap:12px;align-items:center;justify-content:flex-end;padding-top:22px;flex-wrap:wrap}button{min-height:46px;border:0;border-radius:8px;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer}.secondary{background:#ecf2ef;color:var(--brand-dark)}.primary{background:var(--brand);color:#fff}.primary:hover{background:var(--brand-dark)}.danger{background:#f6e7e5;color:#9f2018}.summary{display:none;border-top:1px solid var(--line);background:#f8fbf8;padding:22px 26px 26px}.summary.active{display:block}.summary h2{margin:0 0 12px;font-size:1.08rem}.summary dl{margin:0;display:grid;grid-template-columns:9rem 1fr;gap:8px 16px}.summary dt{color:var(--muted);font-weight:700}.summary dd{margin:0}.fine-print{margin:14px 0 0;color:var(--muted);font-size:.88rem}.admin{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}.toolbar{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}.slot-list,.reservation-list{display:grid;gap:8px}.row-item{display:flex;gap:10px;align-items:center;justify-content:space-between;border:1px solid var(--line);background:#fbfdfb;border-radius:8px;padding:10px 12px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:12px}.stat b{display:block;font-size:1.55rem;line-height:1.1}.breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.breakdown-box{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fbfdfb}.breakdown-box h3{margin:0 0 8px;font-size:1rem}.breakdown-box ul{margin:0;padding-left:1.2rem}.small{font-size:.86rem;color:var(--muted)}@media (max-width:980px){.toolbar{grid-template-columns:1fr 1fr}.hero,.admin{grid-template-columns:1fr}.intro,.panel-pad,.summary{padding:22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){main{padding:16px 10px}.grid,.choice-grid,.breakdown,.toolbar{grid-template-columns:1fr}.actions{align-items:stretch;flex-direction:column-reverse}.summary dl{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.row-item{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <main><div class="shell">
+    <section class="hero">
+      <div class="intro"><div><p class="eyebrow">法人向け出張整体</p><h1>従業員様<br>整体予約フォーム</h1><p>提示された来訪日と時間枠から、ご希望の施術内容を選択してください。</p></div><div class="company-display"><span>対象企業</span><strong id="companyView">未設定</strong></div></div>
+      <section class="panel" aria-label="予約入力"><form id="reservationForm" class="panel-pad"><h2 class="section-title">施術プラン</h2><div class="grid">
+        <div class="field"><label for="name">お名前 <span class="required">必須</span></label><input id="name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="therapist">セラピスト選択 <span class="required">必須</span></label><select id="therapist" name="therapist" required><option value="">選択してください</option><option>指名なし</option><option>佐藤</option><option>田中</option><option>山本</option></select></div>
+        <div class="field"><label for="date">来訪可能日 <span class="required">必須</span></label><select id="date" name="date" required></select></div>
+        <div class="field"><label for="time">指定時間（開始-終了） <span class="required">必須</span></label><select id="time" name="time" required></select></div>
+        <div class="field"><label for="plan">施術プラン <span class="required">必須</span></label><select id="plan" name="plan" required><option value="">選択してください</option><option>マッサージ20分</option><option>整体20分</option></select></div>
+        <fieldset><legend>施術部位 <span class="required">必須</span></legend><div class="choice-grid"><label class="choice"><input type="checkbox" name="bodyPart" value="首・肩"><span>首・肩</span></label><label class="choice"><input type="checkbox" name="bodyPart" value="背中"><span>背中</span></label><label class="choice"><input type="checkbox" name="bodyPart" value="腰"><span>腰</span></label><label class="choice"><input type="checkbox" name="bodyPart" value="腕・手"><span>腕・手</span></label><label class="choice"><input type="checkbox" name="bodyPart" value="脚"><span>脚</span></label><label class="choice"><input type="checkbox" name="bodyPart" value="全身"><span>全身</span></label></div></fieldset>
+        <fieldset><legend>初回利用の有無 <span class="required">必須</span></legend><div class="choice-grid"><label class="choice"><input type="radio" name="firstVisit" value="初回利用" required><span>初回利用</span></label><label class="choice"><input type="radio" name="firstVisit" value="利用経験あり"><span>利用経験あり</span></label></div></fieldset>
+        <fieldset><legend>追加希望</legend><div class="choice-grid"><label class="choice"><input type="checkbox" name="option" value="電気治療"><span>電気治療を希望</span></label><label class="choice"><input type="checkbox" name="option" value="フットマッサージ"><span>フットマッサージを希望</span></label></div></fieldset>
+        <div class="field full"><label for="request">気になる症状・ご要望</label><textarea id="request" name="request" placeholder="例：肩こりが強い、腰を中心にお願いしたい"></textarea></div>
+      </div><div class="actions"><button class="secondary" type="reset">入力を消去</button><button class="primary" type="submit">予約を登録</button></div><p class="fine-print">登録内容はこのブラウザ内に保存され、下の管理欄で集計できます。</p></form><div class="summary" id="summary" aria-live="polite"></div></section>
+    </section>
+
+    <section class="admin">
+      <div class="panel"><div class="panel-pad"><h2 class="section-title">管理設定</h2><div class="grid"><div class="field full"><label for="companyInput">企業名</label><input id="companyInput" placeholder="例：株式会社サンプル"></div><div class="field full"><label for="sheetEndpointInput">Googleスプレッドシート連携URL</label><input id="sheetEndpointInput" placeholder="Google Apps ScriptのウェブアプリURLを貼り付け"></div></div><div class="toolbar" style="margin-top:18px"><div class="field"><label for="slotDate">来訪日</label><input id="slotDate" type="date"></div><div class="field"><label for="slotStart">開始時間</label><input id="slotStart" type="time"></div><div class="field"><label for="slotEnd">終了時間</label><input id="slotEnd" type="time"></div><button class="primary" id="addSlot" type="button">枠を追加</button></div><p class="fine-print">開始から終了までを20分刻みの予約枠にして、上の施術プランへすぐ反映します。</p><div class="slot-list" id="slotList" style="margin-top:14px"></div></div></div>
+      <div class="panel"><div class="panel-pad"><h2 class="section-title">予約集計</h2><div class="stats"><div class="stat"><span>予約人数</span><b id="totalCount">0</b></div><div class="stat"><span>初回利用</span><b id="firstCount">0</b></div><div class="stat"><span>電気治療</span><b id="electricCount">0</b></div><div class="stat"><span>フットマッサージ</span><b id="footCount">0</b></div></div><div class="breakdown"><div class="breakdown-box"><h3>日付・時間別</h3><ul id="bySlot"></ul></div><div class="breakdown-box"><h3>プラン別</h3><ul id="byPlan"></ul></div><div class="breakdown-box"><h3>施術部位別</h3><ul id="byPart"></ul></div><div class="breakdown-box"><h3>セラピスト別</h3><ul id="byTherapist"></ul></div></div><div class="actions"><button class="secondary" id="exportCsv" type="button">CSV出力</button><button class="danger" id="clearReservations" type="button">予約データを消去</button></div><div class="reservation-list" id="reservationList"></div></div></div>
+    </section>
+  </div></main>
+  <script>
+    (function(){
+      var defaultSlots = [
+        { date: '2026-07-08', times: ['10:00-10:20', '10:20-10:40', '10:40-11:00'] },
+        { date: '2026-07-10', times: ['13:00-13:20', '13:20-13:40', '13:40-14:00'] }
+      ];
+      var MANAGEMENT_SYSTEM_ID = '019f030b-eea0-7a51-ab86-bf5611bdccab';
+      var MANAGEMENT_API_ENDPOINT = '';
+      var storageKeys = { settings: 'seitaiSettings', reservations: 'seitaiReservations', managementReservations: 'management:' + MANAGEMENT_SYSTEM_ID + ':reservations' };
+      var form = document.querySelector('#reservationForm');
+      var summary = document.querySelector('#summary');
+      var companyView = document.querySelector('#companyView');
+      var companyInput = document.querySelector('#companyInput');
+      var sheetEndpointInput = document.querySelector('#sheetEndpointInput');
+      var syncStatus = document.querySelector('#syncStatus');
+      var dateSelect = document.querySelector('#date');
+      var timeSelect = document.querySelector('#time');
+      var slotDate = document.querySelector('#slotDate');
+      var slotStart = document.querySelector('#slotStart');
+      var slotEnd = document.querySelector('#slotEnd');
+      var addSlotButton = document.querySelector('#addSlot');
+
+      function readJson(key, fallback) {
+        try {
+          var raw = localStorage.getItem(key);
+          return raw ? JSON.parse(raw) : fallback;
+        } catch (error) {
+          localStorage.removeItem(key);
+          return fallback;
+        }
+      }
+
+      function normalizeSettings(settings) {
+        var normalized = settings && typeof settings === 'object' ? settings : {};
+        normalized.company = typeof normalized.company === 'string' ? normalized.company : '株式会社サンプル';
+        normalized.sheetEndpoint = typeof normalized.sheetEndpoint === 'string' ? normalized.sheetEndpoint : '';
+        normalized.slots = Array.isArray(normalized.slots) ? normalized.slots : defaultSlots;
+        normalized.slots = normalized.slots
+          .filter(function(slot){ return slot && slot.date; })
+          .map(function(slot){
+            var times = Array.isArray(slot.times) ? slot.times : [];
+            return {
+              date: slot.date,
+              times: times.map(function(time){ return String(time).indexOf('-') >= 0 ? String(time) : String(time) + '-終了未設定'; })
+            };
+          });
+        return normalized;
+      }
+
+      function loadSettings() {
+        return normalizeSettings(readJson(storageKeys.settings, { company: '株式会社サンプル', slots: defaultSlots }));
+      }
+
+      function saveSettings(settings) {
+        localStorage.setItem(storageKeys.settings, JSON.stringify(normalizeSettings(settings)));
+      }
+
+      function loadReservations() {
+        var items = readJson(storageKeys.reservations, []);
+        return Array.isArray(items) ? items : [];
+      }
+
+      function saveReservations(items) {
+        localStorage.setItem(storageKeys.reservations, JSON.stringify(items));
+      }
+
+      function loadManagementReservations() {
+        var items = readJson(storageKeys.managementReservations, []);
+        return Array.isArray(items) ? items : [];
+      }
+
+      function saveManagementReservation(reservation) {
+        var linkedReservation = Object.assign({}, reservation, {
+          managementSystemId: MANAGEMENT_SYSTEM_ID,
+          syncedAt: new Date().toISOString()
+        });
+        var items = loadManagementReservations();
+        items.push(linkedReservation);
+        localStorage.setItem(storageKeys.managementReservations, JSON.stringify(items));
+        try {
+          window.dispatchEvent(new CustomEvent('management-reservation-created', { detail: linkedReservation }));
+          var channel = new BroadcastChannel('management-system-' + MANAGEMENT_SYSTEM_ID);
+          channel.postMessage({ type: 'reservation-created', reservation: linkedReservation });
+          channel.close();
+        } catch (error) {}
+        var endpoint = loadSettings().sheetEndpoint || MANAGEMENT_API_ENDPOINT;
+        if (endpoint) {
+          fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(linkedReservation)
+          }).catch(function(error){ console.warn('スプレッドシートへの送信に失敗しました', error); });
+        }
+      }
+
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+          .replaceAll("'", '&#039;');
+      }
+
+      function checkedValues(name) {
+        return Array.from(form.querySelectorAll('input[name="' + name + '"]:checked')).map(function(item){ return item.value; });
+      }
+
+      function minutesFromTime(value) {
+        var parts = value.split(':').map(Number);
+        return parts[0] * 60 + parts[1];
+      }
+
+      function timeFromMinutes(value) {
+        var hour = String(Math.floor(value / 60)).padStart(2, '0');
+        var minute = String(value % 60).padStart(2, '0');
+        return hour + ':' + minute;
+      }
+
+      function makeTwentyMinuteSlots(start, end) {
+        var slots = [];
+        var startMinutes = minutesFromTime(start);
+        var endMinutes = minutesFromTime(end);
+        for (var current = startMinutes; current + 20 <= endMinutes; current += 20) {
+          slots.push(timeFromMinutes(current) + '-' + timeFromMinutes(current + 20));
+        }
+        return slots;
+      }
+
+      function renderCompany() {
+        var settings = loadSettings();
+        companyView.textContent = settings.company || '未設定';
+        if (document.activeElement !== companyInput) {
+          companyInput.value = settings.company || '';
+        }
+        if (sheetEndpointInput && document.activeElement !== sheetEndpointInput) {
+          sheetEndpointInput.value = settings.sheetEndpoint || '';
+        }
+        if (syncStatus) {
+          syncStatus.textContent = settings.sheetEndpoint ? 'スプレッドシート連携：設定済み' : 'スプレッドシート連携：未設定';
+        }
+      }
+
+      function renderDateOptions(selectedDate) {
+        var settings = loadSettings();
+        var current = selectedDate || dateSelect.value;
+        dateSelect.innerHTML = '<option value="">選択してください</option>';
+        settings.slots.forEach(function(slot){
+          var option = document.createElement('option');
+          option.value = slot.date;
+          option.textContent = slot.date;
+          dateSelect.appendChild(option);
+        });
+        if (settings.slots.some(function(slot){ return slot.date === current; })) {
+          dateSelect.value = current;
+        }
+        renderTimeOptions();
+      }
+
+      function renderTimeOptions(selectedTime) {
+        var settings = loadSettings();
+        var slot = settings.slots.find(function(item){ return item.date === dateSelect.value; });
+        var times = slot ? slot.times : [];
+        var current = selectedTime || timeSelect.value;
+        timeSelect.innerHTML = '<option value="">選択してください</option>';
+        times.forEach(function(time){
+          var option = document.createElement('option');
+          option.value = time;
+          option.textContent = time;
+          timeSelect.appendChild(option);
+        });
+        if (times.includes(current)) {
+          timeSelect.value = current;
+        }
+      }
+
+      function renderSlots() {
+        var settings = loadSettings();
+        var slotList = document.querySelector('#slotList');
+        if (!settings.slots.length) {
+          slotList.innerHTML = '<p class="small">来訪枠が未登録です。</p>';
+          return;
+        }
+        slotList.innerHTML = settings.slots.map(function(slot){
+          return '<div class="row-item"><span><strong>' + escapeHtml(slot.date) + '</strong><br><span class="small">' + escapeHtml(slot.times.join(' / ')) + '</span></span><button class="danger" type="button" data-delete-slot="' + escapeHtml(slot.date) + '">削除</button></div>';
+        }).join('');
+      }
+
+      function addCount(map, key) { map[key] = (map[key] || 0) + 1; }
+      function listFromMap(map) {
+        var entries = Object.entries(map);
+        return entries.length ? entries.map(function(pair){ return '<li>' + escapeHtml(pair[0]) + '：' + pair[1] + '名</li>'; }).join('') : '<li>まだ予約がありません</li>';
+      }
+
+      function renderStats() {
+        var reservations = loadReservations();
+        document.querySelector('#totalCount').textContent = reservations.length;
+        document.querySelector('#firstCount').textContent = reservations.filter(function(r){ return r.firstVisit === '初回利用'; }).length;
+        document.querySelector('#electricCount').textContent = reservations.filter(function(r){ return (r.options || []).includes('電気治療'); }).length;
+        document.querySelector('#footCount').textContent = reservations.filter(function(r){ return (r.options || []).includes('フットマッサージ'); }).length;
+        var bySlot = {}, byPlan = {}, byPart = {}, byTherapist = {};
+        reservations.forEach(function(r){
+          addCount(bySlot, (r.date || '') + ' ' + (r.time || ''));
+          addCount(byPlan, r.plan || '未設定');
+          addCount(byTherapist, r.therapist || '未設定');
+          (r.bodyParts || []).forEach(function(part){ addCount(byPart, part); });
+        });
+        document.querySelector('#bySlot').innerHTML = listFromMap(bySlot);
+        document.querySelector('#byPlan').innerHTML = listFromMap(byPlan);
+        document.querySelector('#byPart').innerHTML = listFromMap(byPart);
+        document.querySelector('#byTherapist').innerHTML = listFromMap(byTherapist);
+        document.querySelector('#reservationList').innerHTML = reservations.map(function(r){
+          return '<div class="row-item"><span><strong>' + escapeHtml((r.date || '') + ' ' + (r.time || '') + ' / ' + (r.name || '')) + '</strong><br><span class="small">' + escapeHtml((r.plan || '') + '、' + (r.bodyParts || []).join('・') + '、' + (r.firstVisit || '') + '、追加希望：' + ((r.options || []).join('・') || 'なし')) + '</span></span></div>';
+        }).join('');
+      }
+
+      function refreshAll(selectedDate, selectedTime) {
+        renderCompany();
+        renderDateOptions(selectedDate);
+        renderTimeOptions(selectedTime);
+        renderSlots();
+        renderStats();
+      }
+
+      companyInput.addEventListener('input', function(){
+        var settings = loadSettings();
+        settings.company = companyInput.value.trim();
+        saveSettings(settings);
+        companyView.textContent = settings.company || '未設定';
+      });
+
+      sheetEndpointInput.addEventListener('input', function(){
+        var settings = loadSettings();
+        settings.sheetEndpoint = sheetEndpointInput.value.trim();
+        saveSettings(settings);
+        if (syncStatus) {
+          syncStatus.textContent = settings.sheetEndpoint ? 'スプレッドシート連携：設定済み' : 'スプレッドシート連携：未設定';
+        }
+      });
+
+      dateSelect.addEventListener('change', function(){ renderTimeOptions(); });
+
+      addSlotButton.addEventListener('click', function(){
+        var date = slotDate.value;
+        var start = slotStart.value;
+        var end = slotEnd.value;
+        if (!date || !start || !end) {
+          alert('来訪日、開始時間、終了時間を入力してください。');
+          return;
+        }
+        if (start >= end) {
+          alert('終了時間は開始時間より後にしてください。');
+          return;
+        }
+        var labels = makeTwentyMinuteSlots(start, end);
+        if (!labels.length) {
+          alert('20分以上の時間幅を指定してください。');
+          return;
+        }
+        var settings = loadSettings();
+        var slot = settings.slots.find(function(item){ return item.date === date; });
+        if (!slot) {
+          slot = { date: date, times: [] };
+          settings.slots.push(slot);
+        }
+        labels.forEach(function(label){ if (!slot.times.includes(label)) slot.times.push(label); });
+        slot.times.sort();
+        settings.slots.sort(function(a, b){ return a.date.localeCompare(b.date); });
+        saveSettings(settings);
+        slotStart.value = '';
+        slotEnd.value = '';
+        refreshAll(date, labels[0]);
+      });
+
+      document.querySelector('#slotList').addEventListener('click', function(event){
+        var date = event.target.dataset.deleteSlot;
+        if (!date) return;
+        var settings = loadSettings();
+        settings.slots = settings.slots.filter(function(slot){ return slot.date !== date; });
+        saveSettings(settings);
+        refreshAll();
+      });
+
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        var bodyParts = checkedValues('bodyPart');
+        if (!bodyParts.length) {
+          alert('施術部位を1つ以上選択してください。');
+          return;
+        }
+        var reservation = {
+          id: Date.now(),
+          company: loadSettings().company,
+          name: form.name.value.trim(),
+          therapist: form.therapist.value,
+          date: form.date.value,
+          time: form.time.value,
+          plan: form.plan.value,
+          bodyParts: bodyParts,
+          firstVisit: checkedValues('firstVisit')[0],
+          options: checkedValues('option'),
+          request: form.request.value.trim(),
+          createdAt: new Date().toLocaleString('ja-JP')
+        };
+        var reservations = loadReservations();
+        reservations.push(reservation);
+        saveReservations(reservations);
+        saveManagementReservation(reservation);
+        summary.innerHTML = '<h2>予約を登録しました</h2><dl><dt>企業名</dt><dd>' + escapeHtml(reservation.company || '未設定') + '</dd><dt>お名前</dt><dd>' + escapeHtml(reservation.name) + '</dd><dt>来訪日</dt><dd>' + escapeHtml(reservation.date) + '</dd><dt>指定時間</dt><dd>' + escapeHtml(reservation.time) + '</dd><dt>施術プラン</dt><dd>' + escapeHtml(reservation.plan) + '</dd><dt>追加希望</dt><dd>' + escapeHtml(reservation.options.join('、') || 'なし') + '</dd></dl>';
+        summary.classList.add('active');
+        form.reset();
+        refreshAll();
+      });
+
+      form.addEventListener('reset', function(){
+        summary.classList.remove('active');
+        summary.innerHTML = '';
+        setTimeout(function(){ renderDateOptions(); }, 0);
+      });
+
+      document.querySelector('#clearReservations').addEventListener('click', function(){
+        if (confirm('予約データをすべて消去しますか？')) {
+          saveReservations([]);
+          localStorage.setItem(storageKeys.managementReservations, JSON.stringify([]));
+          renderStats();
+        }
+      });
+
+      document.querySelector('#exportCsv').addEventListener('click', function(){
+        var rows = [['企業名','氏名','日付','時間','セラピスト','プラン','施術部位','初回利用','追加希望','要望','登録日時']].concat(loadReservations().map(function(r){
+          return [r.company, r.name, r.date, r.time, r.therapist, r.plan, (r.bodyParts || []).join('・'), r.firstVisit, (r.options || []).join('・'), r.request, r.createdAt];
+        }));
+        var csv = rows.map(function(row){ return row.map(function(cell){ return '"' + String(cell || '').replaceAll('"', '""') + '"'; }).join(','); }).join('\\n');
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'seitai-reservations.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      refreshAll();
+    })();
+  </script>
+</body>
+</html>
